@@ -1,0 +1,150 @@
+<!doctype html>  
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ --> 
+<!--[if lt IE 7 ]> <html class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame 
+       Remove this if you use the .htaccess -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>{{app_name}}</title>
+  <meta name="description" content="The football game is on FOX. Enter your location and find your channel.">
+  <meta name="author" content="Aaron Bronow & Myron McMillin">
+
+  <!--  Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=.6, maxium-scale=1, user-scalable=1"> 
+
+  <!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+  <!-- CSS : implied media="all" -->
+  <link rel="stylesheet" href="css/style.css?v=2">
+
+  <link href='http://fonts.googleapis.com/css?family=Nobile' rel='stylesheet' type='text/css'>
+
+  <!-- Uncomment if you are specifically targeting less enabled mobile browsers
+  <link rel="stylesheet" media="handheld" href="css/handheld.css?v=2">  -->
+ 
+  <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
+  <script src="js/libs/modernizr-1.6.min.js"></script>
+
+</head>
+
+{% if virtual %}
+<body lang="en" class="no-js">
+{% else %}
+<body lang="en">
+{% endif %}
+
+  <div id="container">
+    <header>
+		<h1>What Channel is the Game On?</h1>
+    </header>
+    
+	<form method="get" action="/location" id="form">
+	    <div id="main" role="main">
+			<div id="details">
+				<h2>The Football Game</h2>
+				<h2>Pittsburgh Steelers vs. Green Bay Packers</h2>
+				<h3>Sunday, February 6, 2011 - 6:30pm ET on FOX</h3>
+			</div>
+		
+			<div id="tv">
+				<div id="screen">
+					<div id="screen1">
+
+						<div class="content">
+							<span>Enter your location</span>
+							<br/>
+							<input type="text" id="zip" name="q" value="{{zip}}"/> 
+							<input type="submit" id="search" value="Search"/>
+						</div>
+					
+						<div class="content" id="find-me" style="display: none">
+							<span>Or</span>
+							<input type="button" id="find" value="Find Me Automatically"/>
+							<img id="loader" src="images/ajax-loader.gif"/>
+							
+						</div>
+					
+						<div class="content" id="guess-me" style="display: none">
+							<span>Are you near</span>
+							<span id="guess"></span>
+						</div>
+					
+					</div>
+					<div id="screen2">
+						<span>FOX</span>
+						<br/>
+						<span id="channel">{{virtual}}</span>
+						<br/>
+						<a href="http://twitter.com/share" id="tweet" class="twitter-share-button" data-text="I'm watching the #SuperBowl on FOX" data-count="none">Tweet</a>
+					</div>
+				</div>
+			</div>
+
+	    </div>
+	</form>
+    
+    <footer>
+<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.whatchannelisthegameon.com%2F&amp;layout=standard&amp;show_faces=true&amp;width=300&amp;action=like&amp;colorscheme=dark&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:80px;" allowTransparency="true"></iframe>
+	
+		<div id="ad" style="display: none;">
+			<script type="text/javascript"><!--
+			google_ad_client = "ca-pub-3984801897331171";
+			/* wcitgo */
+			google_ad_slot = "8824831192";
+			google_ad_width = 728;
+			google_ad_height = 90;
+			//-->
+			</script>
+			<script type="text/javascript"
+			src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+			</script>
+		</div>
+		
+		<div id="masthead">
+			Developed by <a href="http://aaronbronow.com/">Aaron Bronow</a> | Designed by <a href="http://myronmcmillin.com/">Myron McMillin</a>
+	    </div>
+		<!--
+
+    </footer>
+  </div> <!--! end of #container -->
+
+
+  <!-- Javascript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery. fall back to local if necessary -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="js/libs/jquery-1.4.4.js"%3E%3C/script%3E'))</script>
+  
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+  <!-- scripts concatenated and minified via ant build script-->
+  <script src="js/plugins.js"></script>
+  <script src="js/script.js"></script>
+  <!-- end concatenated and minified scripts-->
+  
+
+  <!--[if lt IE 7 ]>
+    <script src="js/libs/dd_belatedpng.js"></script>
+    <script>DD_belatedPNG.fix('img, .png_bg'); // Fix any <img> or .png_bg bg-images. Also, please read goo.gl/mZiyb </script>
+  <![endif]-->
+
+
+  <!-- mathiasbynens.be/notes/async-analytics-snippet Change UA-XXXXX-X to be your site's ID -->
+  <script>
+    var _gaq=[['_setAccount','UA-21183386-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+  
+</body>
+</html>
